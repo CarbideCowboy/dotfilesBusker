@@ -1,0 +1,185 @@
+[colors]
+black = #000000
+background = #c0222626
+;background = #99000000
+accent = #ffe28131
+red = #FF0A0A
+green = #1D927C
+yellow = #59FF2E
+blue = #2E4EFF
+magenta = #5664B1
+cyan = #7B8DEA
+white = #FFFFFF
+
+[global/wm]
+margin-top = 3
+margin-bottom = 3
+margin-margin = 20
+
+[bar/Bar]
+width = 100%
+height = 30
+offset-x = 0%
+offset-y = 0%
+background = #000000
+foreground = ffffff
+
+;border-size=20
+border-size=0
+border-bottom-size=0
+border-color=#00
+
+/*override-redirect = true*/
+;radius = 10
+/*wm-restack = i3*/
+spacing = 1
+padding-left = 1
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+
+line-size = 4
+
+font-0 = IBM Plex Mono:size=8;4
+;font-0 = IBM Plex Mono:size=8;4
+font-1 = IBM Plex Mono:size=8;4
+
+
+modules-left = i3 xwindow
+modules-center = wlan
+modules-right = "//" battery "//" battery1 date
+
+tray-position = right
+tray-padding = 0
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+index-sort = true
+
+label-mode-foreground = ${colors.white}
+label-mode-background = ${colors.red}
+label-mode-padding = 1
+label-mode-margin = 1
+
+label-focused-font = 3
+label-unfocused-font = 3
+label-urgent-font = 3
+label-visible-font = 3
+
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;8
+ws-icon-8 = 9;9
+ws-icon-9 = 10;10
+
+label-focused = %icon%
+;label-focused-background = ${colors.yellow}
+label-focused-background = #D51A2F
+label-focused-foreground = ${colors.black}
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.black}
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+label-disconnected =  WLan d/c
+ramp-signal-0 = " "
+
+[module/date]
+type = internal/date
+date = %A, %b. %d %H:%M
+time = %H:%M
+interval = 5
+format-font =3 
+;format-background = ${colors.yellow}
+format-background = #D51A2F
+format-foreground = ${colors.black}
+format-padding = 1
+format-margin = 1
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+[module/avg-battery]
+type = custom/script
+exec = "count=$(acpi -b | wc -l); sum=$(acpi -b | egrep -o '[0-9]{1,3}%' | tr -d '%' | xargs -I% echo -n '+%'); echo "   //   Bat Avg": $(( sum / count ))%" 
+interval = 5
+
+[module/battery1]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+format-charging-padding = 1
+format-discharging-padding = 1
+format-full-padding = 1
+format-full-prefix = " "
+
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
+
+animation-charging-0 = ">"
+animation-charging-1 = ">>"
+animation-charging-2 = ">>>"
+animation-charging-3 = ">>>>"
+animation-charging-4 = ">>>>>"
+animation-charging-framerate = 750
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-margin = 1
+label-maxlen = 30
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+format-volume-padding = 2
+label-volume = "//"
+;label-volume-foreground = ${colors.cyan}
+
+format-muted-prefix = "mute"
+format-muted-prefix-margin = 2
+;format-muted-foreground = ${colors.cyan}
+label-muted = " mute    "
+
+
+bar-volume-width = 10
+;bar-volume-foreground = ${colors.cyan}
+
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = -
+bar-volume-fill-font = 2
+bar-volume-empty = " "
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.black}
