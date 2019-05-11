@@ -39,22 +39,25 @@ rofi.mesg: "hello"
 ! rofi.show-icons: true
 
 
+Xcursor.theme: bluecurve
+
+URxvt.letterSpace: 0
 URxvt.internalBorder: 25
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
 URxvt.borderless: true
-URxvt.font: xft:IBM Plex Mono:size=8, 
+URxvt.font: xft:IBM Plex Mono:size=12,xft:PowerlineSymbols,bdf:Siji,pcf:Misc Termsym.Icons 
 !xft:DejaVu Sans Mono for Powerline:regular:size=12
 !URxvt.imFont:               xft:DejaVu Sans Mono for Powerline:regular:size=12 
 !URxvt.boldFont:             xft:DejaVu Sans Mono for Powerline:bold:size=12
 !URxvt.italicFont:           xft:DejaVu Sans Mono for Powerline:italic:size=12
 !URxvt.boldItalicFont:       xft:DejaVu Sans Mono for Powerline:bold:italic:size=12
 ! special
-URxvt.foreground:   #93a1a1
-URxvt.background:   #002b36
-URxvt.cursorColor:  #93a1a1
-URxvt.transparent:    true
-URxvt.shading:    6
+URxvt.foreground:   #E0E0E0
+URxvt.background:   #101010
+URxvt.cursorColor:  #F20555
+URxvt.transparent:    false
+URxvt.shading:    0
 
 ! black
 URxvt.color0:       #002b36
@@ -66,11 +69,11 @@ URxvt.color9:       #dc322f
 
 ! green
 URxvt.color2:       #859900
-URxvt.color10:      #859900
+URxvt.color10:      #F20555
 
 ! yellow
-URxvt.color3:       #b58900
-URxvt.color11:      #b58900
+URxvt.color3:       #859900
+URxvt.color11:      #B59800
 
 ! blue
 URxvt.color4:       #268bd2
