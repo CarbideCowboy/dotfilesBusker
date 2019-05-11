@@ -33,7 +33,7 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvt
 
 # window border
-new_window pixel 2
+new_window pixel 4
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -49,8 +49,8 @@ exec_always --no-startup-id /usr/bin/lxpolkit
 
 # audio
 # ALSA controls
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 2%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 2%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 #start polybar
@@ -60,16 +60,21 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id compton -b
 
 #set background
-exec_always --no-startup-id feh --bg-fill ~/Pictures/antiBack.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/fused.png
 
 #set i3lock background
 #exec_always --no-startup-id ~/.config/betterlockscreen/lock.sh -u ~/Pictures/ouray0.png
 
 #execute i3lock
-bindsym $mod+p exec i3lock
+#bindsym $mod+p exec i3lock -i /home/hoker/Pictures/ibm.png
+exec_always --no-startup-id xscreensaver -nosplash
+bindsym $mod+p exec xscreensaver-command -lock
 
 # start rofi
 bindsym $mod+d exec rofi -show run
+
+# start atom
+bindsym $mod+shift+a exec atom
 
 # function bindsyms
 bindsym $mod+i exec qutebrowser
@@ -194,14 +199,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #colors
-set $bg-color			#D51A2F
-set $inactive-bg-color		#141819
+set $bg-color			#101010
+set $inactive-bg-color		#101010
 set $text-color			#000000
 set $inactive-text-color	#FFFFFF
 set $urgent-bg-color		#880F86
 
 #window colors
-client.focused		$bg-color		$bg-color		$text-color		#D51A2F
+client.focused		$bg-color		$bg-color		$text-color		#101010
 client.unfocused	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#002B36
 client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#002B36
 client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#002B36
@@ -209,4 +214,3 @@ client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#002B36
 #gaps
 gaps inner 10
 smart_gaps on
-
